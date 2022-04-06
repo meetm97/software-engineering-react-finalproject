@@ -8,6 +8,10 @@ const api = axios.create({
    withCredentials: true
 });
 
+export const reset = (user) =>
+   api.post(`${AUTH_API}/reset`, user)
+       .then(response => response.data);
+
 export const register = (user) =>
    api.post(`${AUTH_API}/signup`, user)
        .then(response => response.data);
