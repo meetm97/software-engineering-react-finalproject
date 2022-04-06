@@ -1,5 +1,5 @@
 import React from "react";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {useState} from "react";
 import * as service from "../../services/auth-service";
 
@@ -24,6 +24,9 @@ export const Login = () => {
             <button onClick={login}
                     className="btn btn-primary mb-5">Login
             </button>
+            <p className="forgot-password text-right">
+                <Link to= {'/forgot'}> Forgot Password</Link>
+            </p>
         </div>
     );
 };
