@@ -14,6 +14,7 @@ import Lists from "../lists";
 import More from "../more";
 import {Login} from "../profile/login";
 import Signup from "../profile/signup";
+import Forgot from "../profile/forgot";
 import TuitScreen from "../tuits/tuits-screen";
 
 function Tuiter () {
@@ -29,6 +30,7 @@ function Tuiter () {
               <Route path="/" element={<Home/>}/>
               <Route path="/login" element={<Login/>}/>
               <Route path="/signup" element={<Signup/>}/>
+              <Route path="/forgot" element={<Forgot/>}/>
               <Route path="/tuiter" element={<Home/>}/>
               <Route path="/tuiter/:uid" element={<Home/>}/>
               <Route path="/home" element={<Home/>}/>
