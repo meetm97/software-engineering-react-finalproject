@@ -11,6 +11,24 @@
     withCredentials: true
   });
 
+/**
+ * Retrieves all users bookmark the user from the backend.
+ * @param tid tuit id
+ * @returns a list of users
+ */
+export const findAllUsersThatBookmarkedTuit = (tid) =>
+api.get(`${TUITS_API}/${tid}/bookmarks`)
+    .then(response => response.data);
+
+/**
+* Retrieves all tuits bookmarked by the user from the backend.
+* @param uid user id
+* @returns a list of tuits
+*/
+export const findAllTuitsBookmarkedByUser = (uid) =>
+    api.get(`${USERS_API}/${uid}/bookmark`)
+        .then(response => response.data);
+
  /**
   * Update that the user bookmark the tuit
   * @param uid user id
