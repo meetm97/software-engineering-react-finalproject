@@ -3,6 +3,8 @@ import './tuits.css';
 import Tuit from "./tuit";
 import * as likesService from "../../services/likes-service";
 import * as tuitService from "../../services/tuits-service";
+import * as bookmarkService from "../../services/bookmark-service";
+
 const Tuits = ({tuits = [], refreshTuits}) => {
     const likeTuit = (tuit) =>
         likesService.userLikesTuit('me', tuit._id)
@@ -13,6 +15,11 @@ const Tuits = ({tuits = [], refreshTuits}) => {
         likesService.userDislikesTuit('me', tuit._id)
             .then(refreshTuits)
             .catch(e => alert(e))
+    
+    const bookmarkToggle = (tuit) =>
+        bookmarkService.userBookmarksToggle("me", tuit._id)
+            .then(refreshTuits)
+            .catch(e =>alert(e))
 
     const deleteTuit = (tid) =>
         tuitService.deleteTuit(tid)
@@ -27,6 +34,7 @@ const Tuits = ({tuits = [], refreshTuits}) => {
                               deleteTuit={deleteTuit}
                               likeTuit={likeTuit}
                               dislikeTuit={dislikeTuit}
+                              bookmarkTuit={bookmarkToggle}
                               tuit={tuit}/>)
                 }
             </ul>

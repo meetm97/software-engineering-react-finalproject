@@ -40,14 +40,14 @@ const TuitStats = ({tuit, likeTuit, dislikeTuit, bookmarkTuit = () => {}}) => {
           <div className="col">
           <span onClick={() => bookmarkTuit(tuit)} data-testid="test-bookmarkButton">
               {
-                //   tuit.stats && tuit.stats.dislikes > 0 &&
+                 tuit.stats && tuit.stats.bookmarks > 0 &&
                   <i className="fa-solid fa-bookmark" style={{color: 'red'}}></i>
               }
               {
-                  tuit.stats && tuit.stats.dislikes <= 0 &&
-                  <i className="fa-light ffa-bookmark" style={{color: 'black'}}></i>
+                  tuit.stats && tuit.stats.bookmarks <= 0 &&
+                  <i className="fa-light fa-bookmark"></i>
               }
-              {/* {tuit.stats && tuit.stats.dislikes}  */}
+              {tuit.stats && tuit.stats.bookmarks}  
           </span>
             </div>
             <div className="col">
