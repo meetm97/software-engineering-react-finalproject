@@ -17,8 +17,8 @@
  * @returns a list of users
  */
 export const findAllUsersThatBookmarkedTuit = (tid) =>
-api.get(`${TUITS_API}/${tid}/bookmarks`)
-    .then(response => response.data);
+    api.get(`${TUITS_API}/${tid}/bookmarks`)
+        .then(response => response.data);
 
 /**
 * Retrieves all tuits bookmarked by the user from the backend.
