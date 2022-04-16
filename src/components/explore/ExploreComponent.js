@@ -1,6 +1,14 @@
+import Tuits from "../tuits";
 import React from "react";
+import * as service from "../../services/tuits-service";
 
 const ExploreComponent = () => {
+
+     const [tuits, setTuits] = useState([]);
+        const findTuits = () =>
+            service.findAllTuits('me')
+                .then((tuits) => setTuits(tuits));
+        useEffect(findTuits, []);
   return (<>
         <div className="container wd-left-sidebar-container">
           <div>
@@ -49,7 +57,9 @@ const ExploreComponent = () => {
               </div>
             </div>
 
-
+                 <div>
+                      <Tuits tuits={tuits} refreshTuits={findTuits}/>
+                 </div>
           </div>
         </div>
       </>
