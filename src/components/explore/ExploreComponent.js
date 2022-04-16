@@ -1,6 +1,14 @@
+import Tuits from "../tuits";
 import React from "react";
+import * as service from "../../services/tuits-service";
 
 const ExploreComponent = () => {
+
+     const [tuits, setTuits] = useState([]);
+        const findTuits = () =>
+            service.findAllTuits('me')
+                .then((tuits) => setTuits(tuits));
+        useEffect(findTuits, []);
   return (<>
         <div className="container wd-left-sidebar-container">
           <div>
@@ -40,16 +48,9 @@ const ExploreComponent = () => {
               </ul>
             </div>
 
-            <div className="card wd-card-top mt-1">
-              <img src="../../../../images/spaceX.jpeg"
-                   className="wd-card-top-image" alt=""></img>
-              <div className="card-body wd-bottom-left">
-                <p className="card-text"></p>
-                <h3 className="card-title">SpaceX's Starship</h3>
-              </div>
-            </div>
-
-
+                 <div>
+                      <Tuits tuits={tuits} refreshTuits={findTuits}/>
+                 </div>
           </div>
         </div>
       </>
