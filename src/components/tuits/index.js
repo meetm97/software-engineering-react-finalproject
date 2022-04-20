@@ -17,7 +17,7 @@ const Tuits = ({tuits = [], refreshTuits}) => {
             .catch(e => alert(e))
     
     const bookmarkToggle = (tuit) =>
-        bookmarkService.userBookmarksToggle("me", tuit._id)
+        bookmarkService.userBookmarksTuit('me', tuit._id)
             .then(refreshTuits)
             .catch(e =>alert(e))
 
