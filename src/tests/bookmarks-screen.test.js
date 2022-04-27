@@ -1,5 +1,3 @@
-
-   
 /**
  * @file Implement unit tests for dislike screen.
  */
@@ -19,6 +17,17 @@
  
  console.error = () => {
  };
+ test('renders bookmarks screen', async () => {
+     // eslint-disable-next-line testing-library/no-unnecessary-act
+     await act(async () => render(
+         <HashRouter>
+             <Bookmarks/>
+         </HashRouter>
+     ));
+ 
+     const bookmarksTab = screen.getByText(/Bookmark/i);
+     expect(bookmarksTab).toBeInTheDocument();
+ })
  
  test('renders a list of tuits on the screen', () => {
      let tuitsRender
@@ -37,5 +46,24 @@
      ttrTuits.forEach((ttrTuit, ndx) => {
          // eslint-disable-next-line testing-library/no-node-access
          expect(ttrTuit.props.children).toBe(MOCKED_TUITS[ndx].tuit)
+     })
+ })
+ 
+ test('renders bookmarked tuit under bookmark screen', async () => {
+     let tuitsRender
+     act(() => {
+         tuitsRender = create(
+             <Bookmarks Tuits={MOCKED_TUITS}/>
+         )
+     })
+ 
+     const root = tuitsRender.root
+     // eslint-disable-next-line testing-library/await-async-query
+     const ttrTuits = root.findAllByProps({
+         className: 'tuit-content'
+     })
+     ttrTuits.forEach((ttrTuit, ndx) => {
+         // eslint-disable-next-line testing-library/no-node-access
+         expect(ttrTuit.props.children[0]).toBe(MOCKED_TUITS[ndx].tuit)
      })
  })
