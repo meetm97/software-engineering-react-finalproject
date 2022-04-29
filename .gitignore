@@ -106,3 +106,7 @@ dist
 #ignore build files 
 Build/
 
+.DS_Store
+
+src/.DS_Store
+
