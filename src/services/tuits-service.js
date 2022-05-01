@@ -35,6 +35,10 @@ export const deleteTuit = (tid) =>
     api.delete(`${TUITS_API}/${tid}`)
         .then(response => response.data);
 
-export const deleteTuitByContent = (tuit) =>
-    api.get(`${TUITS_API}/${tuit}/delete`)
-        .then(response => response.data);
+// export const deleteTuitByContent = (tuitText) =>
+//     api.get(`${TUITS_API}/${tuit}/delete`, tuitText)
+//         .then(response => response.data);
+
+    export const deleteTuitByContent = (tuitText) =>
+    api.delete(`${TUITS_API}`, {data: {tuit: tuitText}})
+        .then(response => response.data)
